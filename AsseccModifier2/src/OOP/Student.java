@@ -1,7 +1,7 @@
 package OOP;
 
 public class Student {
-    public String name = "John";
+    public String name = "Jonh";
     public String classes = "C02";
 
     public Student () {}

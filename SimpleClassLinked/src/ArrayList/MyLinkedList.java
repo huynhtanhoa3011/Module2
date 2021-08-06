@@ -1,0 +1,73 @@
+package ArrayList;
+
+import org.w3c.dom.Node;
+/* Tạo lớp MyLinkedList, lớp MyLinkedList chứa lớp Node*/
+public class MyLinkedList {
+    private Node head;
+    private int numNodes;
+
+    public MyLinkedList(Object data) {
+        head = new Node(data);
+    }
+
+    private class Node {
+        private Node next;
+        private final Object data;
+
+        public Node(Object data) {
+            this.data = data;
+        }
+
+        public Object getData() {
+            return this.data;
+        }
+    }
+
+    /*Setting method add()
+    purpose: add object in localtion the index of the list
+     */
+    public void add(int index, Object data) {
+        Node temp = head;
+        Node holder;
+
+        for (int i = 0; i < index - 1 && temp.next != null; i++) {
+            temp = temp.next;
+        }
+        holder = temp.next;
+        temp.next = new Node(data);
+        temp.next.next = holder;
+        numNodes++;
+    }
+
+    /*Setting method addFirst()
+    purpose: add object in localtion the first of the list
+     */
+    public void addFirst(Object data) {
+        Node temp = head;
+        head = new Node(data);
+        head.next = temp;
+        numNodes++;
+    }
+
+    /* Setting method get()
+    purpose: pull the element at the index position from the list
+     */
+    public Node get(int index) {
+        Node temp = head;
+        for (int i = 0; i < index; i++) {
+            temp = temp.next;
+        }
+        return temp;
+    }
+
+    /* Setting method printlist
+    purpose: display the list at the element in the list
+     */
+    public void printList() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.println(temp.data);
+            temp = temp.next;
+        }
+    }
+}

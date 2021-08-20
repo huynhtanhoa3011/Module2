@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class StudentManager {
+    static CheckInput checkInput = new CheckInput();
     static List<Student> studentList = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
@@ -11,7 +12,7 @@ public class StudentManager {
         int choose;
         do {
             showMenu();
-            choose = Integer.parseInt(sc.nextLine());
+            choose = checkInput.checkInteger(1, 10);
             switch (choose) {
                 case 1:
                     displayStudent();
@@ -44,7 +45,6 @@ public class StudentManager {
                     System.out.println("Thoát!!!");
                     break;
                 default:
-
             }
         } while (choose != 10);
     }
@@ -61,32 +61,42 @@ public class StudentManager {
 
     private static void addStudent() {
         System.out.print("Nhập số sinh viên cần thêm: ");
-        int n = Integer.parseInt(sc.nextLine());
-
+//        int n = sc.nextInt(); không giới hạn số lần nhập
+        int n = checkInput.checkInteger(1, 50);
         for (int i = 0; i < n; i++) {
-            Student student = new Student();
-            student.input();
-
-            studentList.add(student);
+            System.out.print("name: ");
+            String name = checkInput.checkString();
+            System.out.print("oralTest: ");
+            Double oralTest = checkInput.checkDouble(0, 10);
+            System.out.print("Test15: ");
+            Double Test15 = checkInput.checkDouble(0, 10);
+            System.out.print("Test45: ");
+            Double Test45 = checkInput.checkDouble(0, 10);
+            System.out.print("semesterTest: ");
+            Double semesterTest = checkInput.checkDouble(0, 10);
+            studentList.add(new Student(name, oralTest, Test15, Test45, semesterTest));
         }
     }
 
     private static void editStudentById() {
-        int idStudent;
-        int count = 0;
-        System.out.println("Nhập ID sinh viên cần sửa: ");
-        int id = Integer.parseInt(sc.nextLine());
-        for (Student student : studentList) {
-            if (student.getId() == id) {
-                student.input();
-                count++;
+        System.out.print("Nhập ID học viên cần chỉnh sửa: ");
+        int idStudent = checkInput.checkInteger(1, studentList.size());
+        for (int i = 0; i < studentList.size(); i++) {
+            if (idStudent == studentList.get(i).getId()) {
+                System.out.print("name: ");
+                studentList.get(i).setName(checkInput.checkString());
+                System.out.print("oralTest: ");
+                studentList.get(i).setOralTest(checkInput.checkDouble(0, 10));
+                System.out.print("Test15: ");
+                studentList.get(i).setTest15(checkInput.checkDouble(0, 10));
+                System.out.print("Test45: ");
+                studentList.get(i).setTest45(checkInput.checkDouble(0, 10));
+                System.out.print("semesterTest: ");
+                studentList.get(i).setSemesterTest(checkInput.checkDouble(0, 10));
                 break;
             }
         }
-        if (count == 0) {
-            System.out.println("\tID không tồn tại!!!");
-        }
-        System.out.println("\n\t\t============================================DANH SÁCH HỌC VIÊN SAU KHI SỬA=============================================");
+        System.out.println("\n\t\t==========================================DANH SÁCH HỌC VIÊN SAU KHI SỬA==============================================");
         System.out.println("\n\t\tTên                        ID         OralTest        Test15         Test45      semesterTest     MediumTest");
         for (Student student : studentList) {
             student.display();
@@ -96,19 +106,13 @@ public class StudentManager {
     }
 
     private static void deleteStudentById() {
-        int idStudent;
-        int count = 0;
-        System.out.println("Nhập ID sinh viên cần xóa: ");
-        int id = Integer.parseInt(sc.nextLine());
+        System.out.print("Nhập ID sinh viên cần xóa: ");
+        int id = checkInput.checkInteger(1, studentList.size());
         for (Student student : studentList) {
             if (student.getId() == id) {
                 studentList.remove(student);
-                count++;
                 break;
             }
-        }
-        if (count == 0) {
-            System.out.println("\tID không tồn tại!!!");
         }
         System.out.println("\n\t\t============================================DANH SÁCH HỌC VIÊN SAU KHI XÓA=============================================");
         System.out.println("\n\t\tTên                        ID         OralTest        Test15         Test45      semesterTest     MediumTest");
@@ -120,13 +124,28 @@ public class StudentManager {
     }
 
     private static void editScoreStudent() {
-        System.out.println("ID: ");
-        int id = sc.nextInt();
-        for(Student o : studentList) {
-            if(o.getId() == id) {
-                System.out.println(o.toString());
+        System.out.print("Nhập ID học viên cần chỉnh sửa: ");
+        int idStudent = checkInput.checkInteger(1, studentList.size());
+        for (int i = 0; i < studentList.size(); i++) {
+            if (idStudent == studentList.get(i).getId()) {
+                System.out.print("oralTest:  ");
+                studentList.get(i).setOralTest(sc.nextDouble());
+                System.out.print("Test15:  ");
+                studentList.get(i).setTest15(sc.nextDouble());
+                System.out.print("Test45:  ");
+                studentList.get(i).setTest45(sc.nextDouble());
+                System.out.print("semesterTest:  ");
+                studentList.get(i).setSemesterTest(sc.nextDouble());
+                break;
             }
         }
+        System.out.println("\n\t\t==========================================DANH SÁCH HỌC VIÊN SAU KHI SỬA ĐIỂM==========================================");
+        System.out.println("\n\t\tTên                        ID         OralTest        Test15         Test45      semesterTest     MediumTest");
+        for (Student student : studentList) {
+            student.display();
+        }
+        System.out.println("\n\t\t=======================================================================================================================");
+        System.out.println();
     }
 
     private static void rankStudent() {
@@ -150,7 +169,7 @@ public class StudentManager {
 
     private static void findStudent() {
         String name;
-        System.out.print("Nhập tên sinh viên cần tìm: ");
+        System.out.print("Nhập tên học viên cần tìm: ");
         name = sc.nextLine();
         System.out.println("\n\t\t======================================DANH SÁCH HỌC VIÊN ĐÃ TÌM KIẾM========================================");
         System.out.println("\n\t\tTên                        ID         OralTest        Test15         Test45      semesterTest     MediumTest");
@@ -189,18 +208,15 @@ public class StudentManager {
             do {
                 line = bufferedReader.readLine();
                 System.out.println(line);
-
-
             } while (line != null);
             bufferedReader.close();
             file.close();
         } catch (Exception e) {
-
         }
     }
 
     static void showMenu() {
-        System.out.println("=============MENU=================");
+        System.out.println("===============MENU===============");
         System.out.println("1. Danh sách học viên");
         System.out.println("2. Thêm học viên");
         System.out.println("3. Sửa thông tin học viên theo id");

@@ -78,34 +78,12 @@ public class Student {
         return (oralTest + Test15 + Test45 * 2 + semesterTest * 3) / 7;
     }
 
-    public void input() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Nhập tên: ");
-        name = sc.nextLine();
-
-        System.out.print("Nhập điểm miệng: ");
-        oralTest = sc.nextDouble();
-
-        System.out.print("Nhập điểm 15 phút: ");
-        Test15 = sc.nextDouble();
-
-        System.out.print("Nhập điểm 45 phút: ");
-        Test45 = sc.nextDouble();
-
-        System.out.print("Nhập điểm thi: ");
-        semesterTest = sc.nextDouble();
-    }
-
-    public String getFileLine() {
-        return id + " , " + name + " , " + oralTest + " , " + Test15 + " , " + Test45 + " , " + semesterTest + " , " + mediumTest + "\n";
-    }
-
     public void display() {
-        System.out.printf("\n\t\t%-26s %-12s %-14s %-14s %-14s %-14s %-14s", name, id, oralTest, Test15, Test45, semesterTest,this.getMediumTest());
+        System.out.printf("\n\t\t%-26s %-12d %-14.1f %-14.1f %-14.1f %-14.1f %-14.1f", name, id, oralTest, Test15, Test45, semesterTest,this.getMediumTest());
     }
 
     @Override
     public String toString() {
-        return String.format("\n\t\t%-26s %-12s %-14s %-14s %-14s %-14s %-14s", name, id, oralTest, Test15, Test45, semesterTest,this.getMediumTest());
+        return String.format("\n\t\t%-26s %-12d %-14.1f %-14.1f %-14.1f %-14.1f %-14.1f", name, id, oralTest, Test15, Test45, semesterTest,this.getMediumTest());
     }
 }

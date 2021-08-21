@@ -32,6 +32,7 @@ public class ReadFileExample {
 
         } catch (Exception e) {
             System.out.println("File không tồn tại hoặc nội dung có lỗi");
+            System.out.println(e);
         }
     }
 

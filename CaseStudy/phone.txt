@@ -1,4 +1,8 @@
 
-		nokia                  1               black              2012          india              100.00       
+		SAMSUNG GALAXY A8      2               BLACK              2018          KOREA              1000.00      
 
-		ss                     2               gray               2015          china              300.00       
+		OPPO                   5               BLUE               2021          JAPEN              900.00       
+
+		VILVO                  3               WHITE              2019          CHINA              500.00       
+
+		VPHONE                 4               GREEN              2010          VIETNAM            200.00       

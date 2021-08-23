@@ -44,13 +44,16 @@ public class CheckInput {
 
     public String checkString() {
         String string;
+        boolean check;
         while (true) {
             try {
                 string = sc.nextLine();
-                if (!string.trim().isEmpty()) {
+                String regex = "^[a-zA-Z 0-9]+$";
+                check = string.matches(regex);
+                if (!string.trim().isEmpty() && check == true) {
                     break;
                 } else {
-                    System.out.print("Please re-enter: ");
+                    System.err.print("Please re-enter: ");
                 }
             } catch (Exception e) {
                 System.out.print("Input data type string: ");

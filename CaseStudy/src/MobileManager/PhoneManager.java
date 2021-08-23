@@ -59,8 +59,9 @@ public class PhoneManager {
         System.out.print("Enter the quantity to be added: ");
         int n = checkInput.checkInteger(1, 10);
         for (int i = 0; i < n; i++) {
+
             code = ++count;
-            System.out.print("Name telephone " + code + ":\t");
+            System.out.print("**Name telephone " + code + ":\t");
             String name = checkInput.checkString();
             System.out.print("Color: ");
             String color = checkInput.checkString();
@@ -218,15 +219,15 @@ public class PhoneManager {
 
     public static void showMenu() {
         System.out.println("\t\t\t=====================MENU==================");
-        System.out.println("\t\t\t|      1. AddPhone                        |");
-        System.out.println("\t\t\t|      2. EditPhoneById                   |");
-        System.out.println("\t\t\t|      3. DeletePhoneById                 |");
-        System.out.println("\t\t\t|      4. DisplayPhone                    |");
-        System.out.println("\t\t\t|      5. RankPhoneByPrice                |");
-        System.out.println("\t\t\t|      6. EditPriceById                   |");
-        System.out.println("\t\t\t|      7. FindPhoneByName                 |");
-        System.out.println("\t\t\t|      8. SaveFile                        |");
-        System.out.println("\t\t\t|      9. ReadFile                        |");
+        System.out.println("\t\t\t|      1. Add_Phone                       |");
+        System.out.println("\t\t\t|      2. Edit_Phone_By_Id                |");
+        System.out.println("\t\t\t|      3. Delete_Phone_By_Id              |");
+        System.out.println("\t\t\t|      4. Display_Phone                   |");
+        System.out.println("\t\t\t|      5. Rank_Phone_By_Price             |");
+        System.out.println("\t\t\t|      6. Edit_Price_By_Id                |");
+        System.out.println("\t\t\t|      7. Find_Phone_By_Name              |");
+        System.out.println("\t\t\t|      8. Save_File                       |");
+        System.out.println("\t\t\t|      9. Read_File                       |");
         System.out.println("\t\t\t|      10. Exit                           |");
         System.out.println("\t\t\t===========================================");
         System.out.print("Enter your selection: ");

@@ -1,9 +1,9 @@
 package service;
 
+import check.CheckInput;
 import model.Phone;
 import repository.ProductRepository;
 
-import java.io.*;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,14 +17,14 @@ public class PhoneManager {
     private CheckInput checkInput = new CheckInput();
     private List<Phone> phoneList = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
-    private ProductRepository productRepository;
+    private static ProductRepository productRepository;
 
     public PhoneManager() {
         productRepository = new ProductRepository();
     }
 
     public void addPhone() {
-        boolean check;
+//        boolean check;
         do {
             Scanner sc = new Scanner(System.in);
             id = ++count;
@@ -32,15 +32,17 @@ public class PhoneManager {
             String name = checkInput.checkString();
             System.out.print("Color: ");
             String color = checkInput.checkString();
-            System.out.print("Quantity (1 -> 10): ");
-            int quantity = checkInput.checkInteger(1, 10);
+//            System.out.print("Quantity (1 -> 10): ");
+//            int quantity = checkInput.checkInteger(1, 10);
+            System.out.print("Quantity: ");
+            int quantity = sc.nextInt();
             String yearmanufacture = inputYear();
             System.out.print("Made in: ");
             String made = checkInput.checkString();
             System.out.print("Price (1 USD/product -> 10000 USD/product): ");
             Double price = checkInput.checkDouble(1, 10000);
 
-            Phone phone = new Phone(name, color, quantity, made, yearmanufacture, price);
+            Phone phone = new Phone(id, name, color, quantity, made, yearmanufacture, price);
             phoneList.add(phone);
             productRepository.saveFile(phoneList);
             System.out.print("Return MENU (selection 1) or Continue addPhone (selection #1) ?: ");
@@ -81,7 +83,7 @@ public class PhoneManager {
                 phoneList.get(i).setYearManufacture(inputYear());
                 System.out.print("Made in: ");
                 phoneList.get(i).setMade(checkInput.checkString());
-                System.out.print("Price (USD): ");
+                System.out.print("Price (USD/Product): ");
                 phoneList.get(i).setPrice(checkInput.checkDouble(1, 10000));
                 productRepository.saveFile(phoneList);
                 break;
@@ -196,7 +198,7 @@ public class PhoneManager {
         System.out.println("\t\t\t|      7. Find Phone By Name              |");
         System.out.println("\t\t\t|      8. Exit                            |");
         System.out.println(ANSI_PURPLE + "\t\t\t===========================================" + ANSI_BLACK);
-        System.out.print("\t\t\tEnter your selection (1 -> 8): " + ANSI_BLACK);
+        System.out.print("\t\t\tEnter your selection: " + ANSI_BLACK);
     }
 
 

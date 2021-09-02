@@ -1,10 +1,9 @@
 package presentation;
 
 import service.BuyerService;
-import service.CheckInput;
+import check.CheckInput;
 import model.Phone;
 import service.PhoneManager;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,8 +14,9 @@ public class Main {
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_PURPLE = "\u001B[35m";
-    private static int id = 0;
     static int count = 0;
+    private int id = 0;
+
     static CheckInput checkInput = new CheckInput();
     static List<Phone> phoneList = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
@@ -49,7 +49,7 @@ public class Main {
         int choose;
         do {
             BuyerService.showProduct();
-            choose = checkInput.checkInteger(1, 6);
+            choose = checkInput.checkInteger(1, 5);
 
             switch (choose) {
                 case 1:

@@ -1,7 +1,8 @@
 package service;
 
+import check.CheckInput;
 import model.Bill;
-import model.Phone;
+import regex.Regex;
 import repository.ProductRepository;
 
 import java.text.SimpleDateFormat;
@@ -30,7 +31,8 @@ public class BuyerService {
 //            id = ++count;
 //            System.out.print("customerName " + id + ":\t");
             System.out.print("customerName: ");
-            String customer = checkInput.checkString();
+//            String customer = checkInput.checkString();
+            String customer = Regex.inputName();
             System.out.print("numberPhone: ");
             int phoneNumber = checkInput.checkInteger(1, 1000000000);
             System.out.print("product: ");
@@ -60,7 +62,7 @@ public class BuyerService {
                 System.out.print("customerName: ");
                 productList.get(i).setCustomerName(checkInput.checkString());
                 System.out.print("numberPhone: ");
-                productList.get(i).setNumberPhone(checkInput.checkInteger(1, 1000000000));
+                productList.get(i).setNumberPhone(checkInput.checkInteger(0, 1000000000));
                 System.out.print("product: ");
                 productList.get(i).setProduct(checkInput.checkString());
                 System.out.print("quantity: ");
@@ -124,6 +126,6 @@ public class BuyerService {
         System.out.println("\t\t\t|      4. Pay                             |");
         System.out.println("\t\t\t|      5. Exit                            |");
         System.out.println(ANSI_PURPLE + "\t\t\t===========================================" + ANSI_BLACK);
-        System.out.print("Enter your selection(1 -> 5): " + ANSI_BLACK);
+        System.out.print("Enter your selection: " + ANSI_BLACK);
     }
 }

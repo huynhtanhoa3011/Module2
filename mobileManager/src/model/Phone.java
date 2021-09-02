@@ -14,16 +14,16 @@ public class Phone {
         id = ++count;
     }
 
-    public Phone(String name, String color, int quantity, String made, String yearManufacture, double price) {
+    public Phone(int id, String name, String color, int quantity, String made, String yearManufacture, double price) {
+        this.id = id;
         this.name = name;
         this.color = color;
         this.quantity = quantity;
         this.made = made;
         this.yearManufacture = yearManufacture;
         this.price = price;
-        id = ++count;
+//        id = ++count;
     }
-
 
     public int getId() {
         return id;
@@ -78,7 +78,7 @@ public class Phone {
     }
 
     public void display() {
-        //System.out.printf("\n\t\t%-22s %-15d %-23s %-22s %-16s %-13.2f", name, code, color, yearmanufacture, made, price);
+//        System.out.printf("\n\t\t%-22s %-15d %-23s %-22s %-16s %-13.2f", name, code, color, yearmanufacture, made, price);
         System.out.println(toString());
     }
 

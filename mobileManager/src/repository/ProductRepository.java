@@ -40,7 +40,7 @@ public class ProductRepository {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String line;
-            while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null && !line.isEmpty()) {
                 String[] phone = line.split("\\,     ");
                 Phone phone1 = new Phone();
                 phone1.setName(phone[0]);

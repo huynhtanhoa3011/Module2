@@ -1,7 +1,7 @@
 package model;
 
 public class Bill {
-    public java.lang.System System;
+//    public java.lang.System System;
     private String customerName;
     private int numberPhone;
     private String product;
@@ -19,8 +19,8 @@ public class Bill {
         this.price = price;
     }
 
-    public Bill(String customer, int phoneNumber) {
-    }
+//    public Bill(String customer, int phoneNumber) {
+//    }
 
     public String getCustomerName() {
         return customerName;
